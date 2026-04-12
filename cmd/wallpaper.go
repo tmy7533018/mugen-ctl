@@ -34,12 +34,12 @@ func init() {
 
 func mugenScriptsDir() string {
 	home, _ := os.UserHomeDir()
-	return filepath.Join(home, ".config", "mugen-shell", "scripts")
+	return filepath.Join(home, ".config", "quickshell", "mugen-shell", "scripts")
 }
 
 func wallpaperCacheDir() string {
 	home, _ := os.UserHomeDir()
-	return filepath.Join(home, ".config", "mugen-shell", ".cache", "wallp")
+	return filepath.Join(home, ".config", "quickshell", "mugen-shell", ".cache", "wallp")
 }
 
 func runWallpaperSet(_ *cobra.Command, args []string) error {

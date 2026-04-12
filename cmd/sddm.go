@@ -93,7 +93,7 @@ func sddmVideoSourceDir() (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return filepath.Join(home, ".config", "mugen-shell", "wallpapers", "videos"), nil
+	return filepath.Join(home, ".config", "quickshell", "mugen-shell", "wallpapers", "videos"), nil
 }
 
 func copyFile(src, dst string, mode os.FileMode) error {
