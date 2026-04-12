@@ -1,10 +1,10 @@
 # mugen-ctl
 
-CLI control interface for [mugen-shell](https://github.com/tmy7533018/dotfiles-mugen), a Hyprland desktop shell built with QuickShell.
+CLI control interface for [mugen-shell](https://github.com/tmy7533018/mugen-shell), a Hyprland desktop shell built with QuickShell.
 
 ## Requirements
 
-- [mugen-shell](https://github.com/tmy7533018/dotfiles-mugen) configured and running
+- [mugen-shell](https://github.com/tmy7533018/mugen-shell) configured and running
 - Hyprland
 - `swww`, `mpvpaper` — wallpaper backends
 - `grim`, `slurp` — screenshot tools
