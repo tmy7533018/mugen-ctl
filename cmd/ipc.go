@@ -21,8 +21,14 @@ Available modes:
   wallpaper            Open wallpaper selector
   music                Open music player
   notification         Open notifications
+  ai                   Open AI assistant
+  clipboard            Open clipboard history
   powermenu            Open power menu
   volume               Open volume control
+  wifi                 Open Wi-Fi settings
+  bluetooth            Open Bluetooth settings
+  settings             Open settings panel
+  screenshot-gallery   Open screenshot gallery
   window-switcher      Open window switcher
   window-switcher-next Select next window in switcher
   window-switcher-prev Select previous window in switcher

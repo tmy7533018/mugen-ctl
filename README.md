@@ -32,5 +32,6 @@ mugen-ctl sddm randomize       # set random SDDM login background
 
 ### IPC modes
 
-`launcher` `calendar` `wallpaper` `music` `notification` `powermenu` `volume`
+`launcher` `calendar` `wallpaper` `music` `notification` `ai` `clipboard`
+`powermenu` `volume` `wifi` `bluetooth` `settings` `screenshot-gallery`
 `window-switcher` `window-switcher-next` `window-switcher-prev` `close`
