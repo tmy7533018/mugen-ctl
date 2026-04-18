@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"path/filepath"
 
 	"github.com/spf13/cobra"
 )
@@ -32,18 +31,8 @@ func init() {
 	wallpaperCmd.AddCommand(wallpaperSetCmd, wallpaperGetCmd)
 }
 
-func mugenScriptsDir() string {
-	home, _ := os.UserHomeDir()
-	return filepath.Join(home, ".config", "quickshell", "mugen-shell", "scripts")
-}
-
-func wallpaperCacheDir() string {
-	home, _ := os.UserHomeDir()
-	return filepath.Join(home, ".config", "quickshell", "mugen-shell", ".cache", "wallp")
-}
-
 func runWallpaperSet(_ *cobra.Command, args []string) error {
-	script := filepath.Join(mugenScriptsDir(), "change-wallpaper.sh")
+	script := mugenShellPath("scripts", "change-wallpaper.sh")
 	if _, err := os.Stat(script); err != nil {
 		return fmt.Errorf("change-wallpaper.sh not found at %s", script)
 	}
@@ -55,7 +44,7 @@ func runWallpaperSet(_ *cobra.Command, args []string) error {
 }
 
 func runWallpaperGet(_ *cobra.Command, _ []string) error {
-	p := filepath.Join(wallpaperCacheDir(), "current_wallpaper_path.txt")
+	p := mugenShellPath(".cache", "wallp", "current_wallpaper_path.txt")
 	data, err := os.ReadFile(p)
 	if err != nil {
 		return fmt.Errorf("no wallpaper recorded (cache not found)")

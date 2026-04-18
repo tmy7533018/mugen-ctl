@@ -4,9 +4,6 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"path/filepath"
-	"strings"
-	"time"
 
 	"github.com/spf13/cobra"
 )
@@ -22,31 +19,13 @@ func init() {
 }
 
 func runScreenshot(_ *cobra.Command, _ []string) error {
-	dir := os.Getenv("XDG_PICTURES_DIR")
-	if dir == "" {
-		home, _ := os.UserHomeDir()
-		dir = filepath.Join(home, "Pictures")
-	}
-	outDir := filepath.Join(dir, "mugen-screenshots")
-	if err := os.MkdirAll(outDir, 0755); err != nil {
-		return err
+	script := mugenShellPath("scripts", "take-screenshot.sh")
+	if _, err := os.Stat(script); err != nil {
+		return fmt.Errorf("take-screenshot.sh not found at %s", script)
 	}
 
-	outPath := filepath.Join(outDir, "screenshot_"+time.Now().Format("20060102_150405")+".png")
-
-	regionBytes, err := exec.Command("slurp").Output()
-	if err != nil {
-		return fmt.Errorf("slurp cancelled or failed")
-	}
-	region := strings.TrimSpace(string(regionBytes))
-
-	c := exec.Command("grim", "-g", region, outPath)
+	c := exec.Command("bash", script)
 	c.Stdout = os.Stdout
 	c.Stderr = os.Stderr
-	if err := c.Run(); err != nil {
-		return fmt.Errorf("grim failed: %w", err)
-	}
-
-	fmt.Println(outPath)
-	return nil
+	return c.Run()
 }

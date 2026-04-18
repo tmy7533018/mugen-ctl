@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"os"
+	"path/filepath"
 
 	"github.com/spf13/cobra"
 )
@@ -16,4 +17,13 @@ func Execute() {
 	if err := rootCmd.Execute(); err != nil {
 		os.Exit(1)
 	}
+}
+
+func mugenShellDir() string {
+	home, _ := os.UserHomeDir()
+	return filepath.Join(home, ".config", "quickshell", "mugen-shell")
+}
+
+func mugenShellPath(parts ...string) string {
+	return filepath.Join(append([]string{mugenShellDir()}, parts...)...)
 }

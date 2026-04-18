@@ -85,15 +85,11 @@ func sddmVideoSourceDir() (string, error) {
 		if err == nil {
 			parts := strings.Split(strings.TrimSpace(string(out)), ":")
 			if len(parts) >= 6 {
-				return filepath.Join(parts[5], ".config", "mugen-shell", "wallpapers", "videos"), nil
+				return filepath.Join(parts[5], ".config", "quickshell", "mugen-shell", "wallpapers", "videos"), nil
 			}
 		}
 	}
-	home, err := os.UserHomeDir()
-	if err != nil {
-		return "", err
-	}
-	return filepath.Join(home, ".config", "quickshell", "mugen-shell", "wallpapers", "videos"), nil
+	return mugenShellPath("wallpapers", "videos"), nil
 }
 
 func copyFile(src, dst string, mode os.FileMode) error {
